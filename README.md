@@ -1,165 +1,130 @@
-# AI Voice Assistant
+# AI Voice Assistant (Windows, Python)
 
-A powerful Windows voice assistant built with Python that can control your system, manage files, search the web, and much more.
+A hands-free desktop assistant for Windows built with Python. Control system settings, manage files, search the web/Wikipedia, open apps, do quick math, set timers, take notes, and more — all by voice. Uses Google Speech Recognition for input and Windows SAPI for TTS (optional ElevenLabs).
 
-## Features
+## ✨ Features
 
 ### 🎙️ Voice Interaction
-- Speech recognition using Google Web Speech API
-- Text-to-speech with ElevenLabs integration and pyttsx3 fallback
-- Wake word detection mode
-- Privacy mode for text-only operation
+- Speech recognition via Google Web Speech API
+- Text-to-speech using Windows SAPI (default) + optional ElevenLabs
+- Optional wake word (e.g., "hey assistant")
+- Privacy mode (text-only: no TTS)
 
 ### 🖥️ System Control
-- Volume control (set, get, mute/unmute)
+- Volume control: set/get/mute (e.g., "volume 70", "set volume to 30")
 - Screenshot capture
-- Screen lock
+- Lock screen
 - System information (CPU, memory, disk, battery)
-- WiFi profile management
+- Wi‑Fi profiles listing
 
 ### 📁 File Management
 - Create folders and files
-- Search for files
-- File operations with voice commands
+- Search files anywhere under the current directory
 
-### 🌐 Web Integration
-- Smart website opening with multi-word support
-- Google search integration
-- Wikipedia search with summaries
-- Weather information (with API key)
+### 🌐 Web & Information
+- Open websites (smart handling for multi‑word names)
+- Google search
+- Wikipedia summaries (no API key required)
+- Weather info via OpenWeatherMap (API key optional)
 
-### 🎵 Media Control
-- Application launching and management
-- Window control and switching
+### 🛠️ Productivity & Utilities
+- Calculator ("calculate 25 times 4")
+- Unit conversions ("convert 100 pounds to kilograms")
+- Timers ("set timer for 5 minutes")
+- Quick notes (saved to quick_notes.txt)
+- Secure password generator
 
-### 🛠️ Productivity Tools
-- Mathematical calculations
-- Unit conversions
-- Timer functionality
-- Quick note-taking
-- Password generation
+### 🪟 Windows Integration
+- Minimize all windows
+- Switch to/close applications
+- Launch common apps (Calculator, Notepad, Chrome, etc.)
 
-### 🔒 Security Features
-- System security checks
-- Password generation
-- Privacy mode toggle
+## 🚀 Quick Start
 
-## Installation
-
-1. Clone this repository:
+1) Clone and enter the folder
 ```bash
 git clone <your-repo-url>
 cd AI_Voice_Assistant
 ```
 
-2. Install required dependencies:
+2) Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Configure your API keys in `config.py` (see Configuration section)
+3) (Optional) Configure keys in `config.py`
+- ElevenLabs (for premium TTS)
+- OpenWeatherMap (weather features)
+- Wake word and privacy settings
 
-4. Run the assistant:
+4) Run the assistant
 ```bash
 python main.py
 ```
 
-## Configuration
+## ⚙️ Configuration
+Edit `config.py` or set environment variables.
 
-Create a `config.py` file or set environment variables:
+- Wake word
+```python
+WAKE_WORD_MODE = False      # True to require "hey assistant"
+WAKE_WORD = "hey assistant"
+```
 
-### ElevenLabs (Optional)
+- Privacy mode
+```python
+PRIVACY_MODE = False        # True = no voice output (text only)
+```
+
+- ElevenLabs (optional)
 ```python
 ELEVENLABS_API_KEY = "your_elevenlabs_api_key"
 CUSTOM_VOICE_NAME = "your_voice_name"
 ```
 
-### OpenWeatherMap (Optional)
+- OpenWeatherMap (optional)
 ```python
 OPENWEATHER_API_KEY = "your_openweathermap_api_key"
 ```
 
+## 🗣️ Examples
+- "hello" / "what time is it"
+- "volume 70" / "set volume to 30"
+- "take a screenshot" / "lock screen"
+- "system info" / "security check"
+- "open website youtube" / "search google for python tutorials"
+- "what is machine learning"
+- "weather in London"
+- "create folder Projects" / "create file notes.txt"
+- "help" / "stop"
 
-## Usage
+Tip: If you enable the wake word, prefix commands with it, e.g., "hey assistant, what time is it".
 
-### Voice Commands Examples
-
-#### System Control
-- "Set volume to 50"
-- "Take a screenshot"
-- "Lock screen"
-- "System info"
-
-#### Productivity
-- "Calculate 25 times 4"
-- "Convert 100 pounds to kilograms"
-- "Set timer for 5 minutes"
-- "Note remember to call mom"
-
-#### Web & Information
-- "Open website youtube"
-- "Open website chat gpt"
-- "Search Google for Python tutorials"
-- "What is machine learning"
-- "Weather in New York"
-
-#### File Management
-- "Create folder Projects"
-- "Search for file report"
-- "Create file test.txt"
-
-#### Applications
-- "Open calculator"
-- "Open notepad"
-- "Switch to Chrome"
-
-## Supported Websites
-
-The assistant recognizes many common websites with multi-word names:
-- Chat GPT → https://chat.openai.com
-- YouTube → https://www.youtube.com
-- Google Drive → https://drive.google.com
-- And many more...
-
-## Requirements
-
+## ✅ Requirements
 - Windows 10/11
 - Python 3.7+
 - Microphone for voice input
-- Internet connection for speech recognition and web features
+- Internet for speech recognition and web features
 
-## Dependencies
+## 📦 Key Dependencies
+See `requirements.txt` for the full list. Highlights:
+- speechrecognition, pywin32, comtypes
+- pycaw, pyautogui, psutil
+- requests, wikipedia, pywhatkit
+- elevenlabs (optional), pyttsx3 (fallback)
 
-See `requirements.txt` for full list. Key dependencies:
-- speechrecognition
-- pyttsx3
-- elevenlabs (optional)
-- pycaw
-- pyautogui
-- psutil
-- requests
+## 🧰 Troubleshooting
+- TTS not speaking: ensure Windows audio is available; Windows SAPI is used by default.
+- "Sorry, I didn't catch that": try speaking closer to the mic or adjust ENERGY_THRESHOLD in `config.py`.
+- Volume control fails: some systems require running the terminal as Administrator.
+- Weather not working: set `OPENWEATHER_API_KEY`.
+- Wikipedia errors: check your internet or try rephrasing the query.
 
-## Contributing
-
-1. Fork the repository
+## 🤝 Contributing
+1. Fork the repo
 2. Create a feature branch
 3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+4. Push and open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Microphone not working**: Check Windows microphone permissions
-2. **Volume control fails**: Run as administrator or check audio device permissions
-3. **ElevenLabs not working**: Verify API key and voice name
-4. **Speech recognition errors**: Check internet connection
-
-### Support
-
-For issues and questions, please create an issue on GitHub.
+## 📄 License
+MIT — see `LICENSE`.
