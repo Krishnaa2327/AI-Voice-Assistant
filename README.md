@@ -43,7 +43,7 @@ A hands-free desktop assistant for Windows built with Python. Control system set
 
 1) Clone and enter the folder
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Krishnaa2327/AI-Voice-Assistant.git
 cd AI_Voice_Assistant
 ```
 
@@ -127,4 +127,4 @@ See `requirements.txt` for the full list. Highlights:
 4. Push and open a Pull Request
 
 ## 📄 License
-MIT — see `LICENSE`.
+MIT — see [`LICENSE`](LICENSE).
