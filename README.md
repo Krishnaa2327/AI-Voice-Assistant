@@ -50,6 +50,7 @@ cd AI_Voice_Assistant
 2) Install dependencies
 ```bash
 pip install -r requirements.txt
+pip install PyAudio
 ```
 
 3) (Optional) Configure keys in `config.py`
